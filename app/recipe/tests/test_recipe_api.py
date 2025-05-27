@@ -200,7 +200,7 @@ class PrivateRecipeApiTests(TestCase):
             'title': 'Thai Prawn Curry',
             'time_minutes': 30,
             'price': Decimal('2.50'),
-            'tags': [{'name:' 'Thai'}, {'name': 'Dinner'}]
+            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
@@ -217,13 +217,13 @@ class PrivateRecipeApiTests(TestCase):
             self.assertTrue(exists)
 
     def test_create_recipe_with_existing_tags(self):
-        """Test creaating a recipe with existing tag."""
+        """Test creating a recipe with existing tag."""
         tag_indian = Tag.objects.create(user=self.user, name='Indian')
         payload = {
             'title': 'Pongal',
             'time_minutes': 60,
             'price': Decimal('4.50'),
-            'tags': [{'name', 'Indian'}, {'name': 'Breackfast'}],
+            'tags': [{'name': 'Indian'}, {'name': 'Breackfast'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
